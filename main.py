@@ -53,8 +53,8 @@ points_y_model_true = [predict_y_true(px) for px in points_x]
 points_y_model_estimated = [predict_y_esitimated(px) for px in points_x]
 
 plt.scatter(points_x, points_y, color="blue")
-plt.plot(points_x, points_y_model_true, color="red", label="true")
-plt.plot(points_x, points_y_model_estimated, color="green", label="estimated")
+plt.plot(points_x, points_y_model_true, color="green", label="true")
+plt.plot(points_x, points_y_model_estimated, color="red", label="estimated")
 plt.legend(bbox_to_anchor=(1, 0), loc="lower right")
 
 # plt.show()
