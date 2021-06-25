@@ -22,8 +22,6 @@ points = np.vstack([points_x, points_y])  # shape[] = {2, N_points}
 points_extend = np.vstack([points, np.repeat(1, N_points)])  # shape[] = {3, N_points}
 
 # Line fitting
-# A = U @ Sigma @ Vt, Sigma = np.diag(sigma),
-
 A = points_extend  # A.shape = {N_points, 3}
 U, sigma, Vt = np.linalg.svd(A)  # U.shape = {3, 3}, len(sigma) = 3, Vt.shape = {N_points, N_points}
 sigma_diag = np.diag(sigma)
@@ -41,11 +39,9 @@ print(
     f"line_coeff (Estimated), n_x: {line_coeff_estimated[0]}, n_y: {line_coeff_estimated[1]}, d: {line_coeff_estimated[2]}"
 )
 
-
+# Draw results
 def predict_y(point_x, line_coeff):
     return -(line_coeff[0] * point_x + line_coeff[2]) / line_coeff[1]
-
-
 predict_y_true = partial(predict_y, line_coeff=line_coeff_true)
 predict_y_esitimated = partial(predict_y, line_coeff=line_coeff_estimated)
 
